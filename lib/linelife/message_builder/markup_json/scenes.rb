@@ -14,9 +14,7 @@ module Linelife
             # Rich messages can have only one scene named "scene1".
             scene1: {
               # The scene has two sub-models draws and listeners.
-              draws: [
-                draw(strategy)
-              ],
+              draws: [draw(strategy)],
               listeners: listeners(strategy)
             }
           }
@@ -35,7 +33,8 @@ module Linelife
             # Fixed 0.
             y: 0,
             # Width of the image.
-            # Integer value. Any one of 1040, 700, 460, 300, 240. This value must be same as the image width.
+            # Integer value. Any one of 1040, 700, 460, 300, 240.
+            #   This value must be same as the image width.
             w: strategy[:width] || 1040,
             # Height of the image.
             # Integer value. Max value is 2080px.
@@ -53,7 +52,7 @@ module Linelife
               type: 'touch',
               # Rectangular area where tap event is received.
               # Array of the rectangle information. [x, y, width, height].
-              params: h[:listener_params] || horizontal_split(strategy, size, index),
+              params: h[:listener_params] || horizontal(strategy, size, index),
               # Action ID to be executed when the tap event occurs.
               # Action ID string. For example, "openHomepage".
               action: h[:name].to_s
@@ -62,7 +61,7 @@ module Linelife
           array
         end
 
-        def self.horizontal_split(strategy, size, index)
+        def self.horizontal(strategy, size, index)
           [
             0,
             (draw(strategy)[:h] / size) * index,

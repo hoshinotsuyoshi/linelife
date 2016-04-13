@@ -27,8 +27,8 @@ describe MessageBuilder::MarkupJson::Actions do
       let(:strategy) do
         {
           actions: [
-            { name: :action1, link_uri: 'https://twitter.com/hoppiestar' },
-            { name: :action2, link_uri: 'https://twitter.com/hoppiestar/status/719483889526288384' }
+            { name: :action1, link_uri: 'https://example.com/index.html' },
+            { name: :action2, link_uri: 'https://example.com/items/1' }
           ]
         }
       end
@@ -36,8 +36,16 @@ describe MessageBuilder::MarkupJson::Actions do
       it do
         actions = MessageBuilder::MarkupJson::Actions.create(strategy)
         expect(actions).to eq(
-          action1: { type: 'web', text: '', params: { linkUri: 'https://twitter.com/hoppiestar' } },
-          action2: { type: 'web', text: '', params: { linkUri: 'https://twitter.com/hoppiestar/status/719483889526288384' } }
+          action1: {
+            type: 'web',
+            text: '',
+            params: { linkUri: 'https://example.com/index.html' }
+          },
+          action2: {
+            type: 'web',
+            text: '',
+            params: { linkUri: 'https://example.com/items/1' }
+          }
         )
       end
     end
