@@ -54,7 +54,7 @@ describe Linelife::MessageExtractor do
       request = double(body: StringIO.new('body'))
 
       expect_any_instance_of(Linelife::SignatureValidator).to \
-        receive(:validate!).with(request: request, string: 'body'){ nil }
+        receive(:validate!).with(request: request, string: 'body') { nil }
       extractor = Linelife::MessageExtractor.new
 
       expect(extractor).to \
