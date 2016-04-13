@@ -9,11 +9,7 @@ module Linelife
   class MessageExtractor
     extend Forwardable
 
-    def_delegators :validator, :validate!
-
-    def validator
-      SignatureValidator.new
-    end
+    def_delegator :validator, :validate!
 
     def do_extract(string)
       hash = JSON.parse(string)
@@ -26,6 +22,12 @@ module Linelife
       string = request.body.read
       validate!(request: request, string: string)
       do_extract(string)
+    end
+
+    private
+
+    def validator
+      SignatureValidator.new
     end
   end
 end
