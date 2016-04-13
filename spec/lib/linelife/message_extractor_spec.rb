@@ -48,4 +48,19 @@ describe Linelife::MessageExtractor do
       end
     end
   end
+
+  describe '#extract' do
+    it 'calls SignatureValidator#validate! and calls #extract' do
+      request = double(body: StringIO.new('body'))
+
+      expect_any_instance_of(SignatureValidator).to \
+        receive(:validate!).with(request: request, string: 'body'){ nil }
+      extractor = Linelife::MessageExtractor.new
+
+      expect(extractor).to \
+        receive(:do_extract).with('body')
+
+      extractor.extract(request)
+    end
+  end
 end
