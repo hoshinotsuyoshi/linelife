@@ -4,11 +4,11 @@ require 'linelife/message_client'
 require 'linelife/message_extractor'
 
 #
-# message to line bot api
+# line bot api
 #
 module Linelife
   def send_message(hash)
-    message = Message.new(hash)
+    message = Message::Outbound.new(hash)
     MessageClient.new.send(message)
   end
 

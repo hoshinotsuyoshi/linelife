@@ -1,16 +1,16 @@
-describe Linelife::Message do
+describe Linelife::Message::Outbound do
   describe '.new' do
     context 'given {"a":"b"}' do
       subject do
-        Linelife::Message.new('a' => 'b')
+        Linelife::Message::Outbound.new('a' => 'b')
       end
 
       before do
-        expect_any_instance_of(Linelife::Message).to \
+        expect_any_instance_of(Linelife::Message::Outbound).to \
           receive(:line_channel_id) { 'channel_id' }
-        expect_any_instance_of(Linelife::Message).to \
+        expect_any_instance_of(Linelife::Message::Outbound).to \
           receive(:line_channel_secret) { 'channel_secret' }
-        expect_any_instance_of(Linelife::Message).to \
+        expect_any_instance_of(Linelife::Message::Outbound).to \
           receive(:line_channel_mid) { 'channel_mid' }
       end
 
