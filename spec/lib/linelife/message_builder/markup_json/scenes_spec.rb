@@ -1,4 +1,3 @@
-require 'linelife'
 include Linelife
 
 describe MessageBuilder::MarkupJson::Scenes do

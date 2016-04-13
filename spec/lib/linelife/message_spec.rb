@@ -1,19 +1,16 @@
-require 'linelife'
-include Linelife
-
-describe Message do
+describe Linelife::Message do
   describe '.new' do
     context 'given {"a":"b"}' do
       subject do
-        Message.new('a' => 'b')
+        Linelife::Message.new('a' => 'b')
       end
 
       before do
-        expect_any_instance_of(Message).to \
+        expect_any_instance_of(Linelife::Message).to \
           receive(:line_channel_id) { 'channel_id' }
-        expect_any_instance_of(Message).to \
+        expect_any_instance_of(Linelife::Message).to \
           receive(:line_channel_secret) { 'channel_secret' }
-        expect_any_instance_of(Message).to \
+        expect_any_instance_of(Linelife::Message).to \
           receive(:line_channel_mid) { 'channel_mid' }
       end
 

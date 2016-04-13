@@ -1,7 +1,4 @@
-require 'linelife'
-include Linelife
-
-describe SignatureValidator do
+describe Linelife::SignatureValidator do
   describe '#validate!' do
     let(:request) { double(:request, body: body, env: env) }
     let(:body) { StringIO.new(string).tap(&:read) }
@@ -13,10 +10,13 @@ describe SignatureValidator do
       let(:env) { { 'HTTP_X_LINE_CHANNELSIGNATURE' => correct_signatrue } }
 
       it do
-        expect_any_instance_of(SignatureValidator).to \
+        expect_any_instance_of(Linelife::SignatureValidator).to \
           receive(:channel_secret) { channel_secret }
         expect do
-          SignatureValidator.new.validate!(string: string, request: request)
+          Linelife::SignatureValidator.new.validate!(
+            string: string,
+            request: request
+          )
         end.not_to raise_error
       end
     end
@@ -26,10 +26,13 @@ describe SignatureValidator do
       let(:env) { { 'HTTP_X_LINE_CHANNELSIGNATURE' => wrong_signatrue } }
 
       it do
-        expect_any_instance_of(SignatureValidator).to \
+        expect_any_instance_of(Linelife::SignatureValidator).to \
           receive(:channel_secret) { channel_secret }
         expect do
-          SignatureValidator.new.validate!(string: string, request: request)
+          Linelife::SignatureValidator.new.validate!(
+            string: string,
+            request: request
+          )
         end.to raise_error Linelife::SignatureValidator::Error
       end
     end

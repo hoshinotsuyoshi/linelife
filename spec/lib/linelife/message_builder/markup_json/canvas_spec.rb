@@ -1,13 +1,10 @@
-require 'linelife'
-include Linelife
-
-describe MessageBuilder::MarkupJson::Canvas do
+describe Linelife::MessageBuilder::MarkupJson::Canvas do
   describe '.create' do
     context 'canvas_height is not filled' do
       let(:strategy) { {} }
 
       it do
-        canvas = MessageBuilder::MarkupJson::Canvas.create(strategy)
+        canvas = Linelife::MessageBuilder::MarkupJson::Canvas.create(strategy)
         expect(canvas).to eq(
           height: 1040,
           initialScene: 'scene1',
@@ -20,7 +17,7 @@ describe MessageBuilder::MarkupJson::Canvas do
       let(:strategy) { { canvas_height: 1555 } }
 
       it do
-        canvas = MessageBuilder::MarkupJson::Canvas.create(strategy)
+        canvas = Linelife::MessageBuilder::MarkupJson::Canvas.create(strategy)
         expect(canvas).to eq(
           height: 1555,
           initialScene: 'scene1',

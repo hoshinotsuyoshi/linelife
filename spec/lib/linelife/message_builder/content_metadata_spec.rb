@@ -1,15 +1,12 @@
-require 'linelife'
-include Linelife
-
-describe MessageBuilder::ContentMetadata do
+describe Linelife::MessageBuilder::ContentMetadata do
   describe '.create' do
     context 'download_url: is filled' do
       let(:strategy) { { download_url: 'http://image.example.com/img' } }
 
       it do
-        expect(MessageBuilder::MarkupJson).to \
+        expect(Linelife::MessageBuilder::MarkupJson).to \
           receive(:create).with(strategy) { { this_is_dummy: 'dummy' } }
-        metadata = MessageBuilder::ContentMetadata.create(strategy)
+        metadata = Linelife::MessageBuilder::ContentMetadata.create(strategy)
         expect(metadata).to eq(
           ALT_TEXT: 'Please visit our homepage and the item page you wish.',
           DOWNLOAD_URL: 'http://image.example.com/img',
@@ -27,9 +24,9 @@ describe MessageBuilder::ContentMetadata do
         end
 
         it do
-          expect(MessageBuilder::MarkupJson).to \
+          expect(Linelife::MessageBuilder::MarkupJson).to \
             receive(:create).with(strategy) { { this_is_dummy: 'dummy' } }
-          metadata = MessageBuilder::ContentMetadata.create(strategy)
+          metadata = Linelife::MessageBuilder::ContentMetadata.create(strategy)
           expect(metadata).to eq(
             ALT_TEXT: 'alt text.',
             DOWNLOAD_URL: 'http://image.example.com/img',
@@ -45,8 +42,8 @@ describe MessageBuilder::ContentMetadata do
 
       it do
         expect do
-          MessageBuilder::ContentMetadata.create(strategy)
-        end.to raise_error MessageBuilder::ContentMetadata::Error
+          Linelife::MessageBuilder::ContentMetadata.create(strategy)
+        end.to raise_error Linelife::MessageBuilder::ContentMetadata::Error
       end
     end
   end

@@ -1,13 +1,10 @@
-require 'linelife'
-include Linelife
-
-describe MessageBuilder::MarkupJson::Images do
+describe Linelife::MessageBuilder::MarkupJson::Images do
   describe '.create' do
     context 'image_image1_h is not filled' do
       let(:strategy) { {} }
 
       it do
-        canvas = MessageBuilder::MarkupJson::Images.create(strategy)
+        canvas = Linelife::MessageBuilder::MarkupJson::Images.create(strategy)
         expect(canvas).to eq(
           image1: { x: 0, y: 0, w: 1040, h: 1040 }
         )
@@ -18,7 +15,7 @@ describe MessageBuilder::MarkupJson::Images do
       let(:strategy) { { image_image1_h: 1555 } }
 
       it do
-        canvas = MessageBuilder::MarkupJson::Images.create(strategy)
+        canvas = Linelife::MessageBuilder::MarkupJson::Images.create(strategy)
         expect(canvas).to eq(
           image1: { x: 0, y: 0, w: 1040, h: 1555 }
         )

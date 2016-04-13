@@ -1,15 +1,12 @@
-require 'linelife'
-include Linelife
-
-describe MessageBuilder::MarkupJson::Actions do
+describe Linelife::MessageBuilder::MarkupJson::Actions do
   describe '.create' do
     context 'actions is not filled' do
       let(:strategy) { {} }
 
       it do
         expect do
-          MessageBuilder::MarkupJson::Actions.create(strategy)
-        end.to raise_error MessageBuilder::MarkupJson::Actions::Error
+          Linelife::MessageBuilder::MarkupJson::Actions.create(strategy)
+        end.to raise_error Linelife::MessageBuilder::MarkupJson::Actions::Error
       end
     end
 
@@ -18,8 +15,8 @@ describe MessageBuilder::MarkupJson::Actions do
 
       it do
         expect do
-          MessageBuilder::MarkupJson::Actions.create(strategy)
-        end.to raise_error MessageBuilder::MarkupJson::Actions::Error
+          Linelife::MessageBuilder::MarkupJson::Actions.create(strategy)
+        end.to raise_error Linelife::MessageBuilder::MarkupJson::Actions::Error
       end
     end
 
@@ -34,7 +31,7 @@ describe MessageBuilder::MarkupJson::Actions do
       end
 
       it do
-        actions = MessageBuilder::MarkupJson::Actions.create(strategy)
+        actions = Linelife::MessageBuilder::MarkupJson::Actions.create(strategy)
         expect(actions).to eq(
           action1: {
             type: 'web',

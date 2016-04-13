@@ -1,8 +1,8 @@
+$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
+require 'linelife'
+
 require 'webmock/rspec'
 WebMock.enable!
-
-lib = File.expand_path('../lib', __FILE__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 # load spec/support/**/*.rb
 require 'pathname'

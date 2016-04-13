@@ -1,14 +1,11 @@
-require 'linelife'
-include Linelife
-
-describe MessageBuilder do
+describe Linelife::MessageBuilder do
   describe '#build' do
     include_context 'outbound expected message is contentType:1'
 
     it do
       to = 'ufffff'
       text = 'テスト送信'
-      message = MessageBuilder.new.build(to: to, text: text)
+      message = Linelife::MessageBuilder.new.build(to: to, text: text)
       expect(message).to eq(expected_hash)
     end
   end
@@ -33,7 +30,10 @@ describe MessageBuilder do
           }
         ]
       }
-      message = MessageBuilder.new.build_rich(to: to, strategy: strategy)
+      message = Linelife::MessageBuilder.new.build_rich(
+        to: to,
+        strategy: strategy
+      )
       expect(message).to eq(expected_hash)
     end
   end

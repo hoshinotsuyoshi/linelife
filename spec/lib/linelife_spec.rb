@@ -1,15 +1,13 @@
-require 'linelife'
-
 describe Linelife do
   describe '.send_message' do
     it do
       content_hash = { a: 'b' }
 
-      expect_any_instance_of(Message).to \
+      expect_any_instance_of(Linelife::Message).to \
         receive(:line_channel_id) { 'channel_id' }
-      expect_any_instance_of(Message).to \
+      expect_any_instance_of(Linelife::Message).to \
         receive(:line_channel_secret) { 'channel_secret' }
-      expect_any_instance_of(Message).to \
+      expect_any_instance_of(Linelife::Message).to \
         receive(:line_channel_mid) { 'channel_mid' }
 
       stub = stub_request(:post, 'https://trialbot-api.line.me/v1/events')
