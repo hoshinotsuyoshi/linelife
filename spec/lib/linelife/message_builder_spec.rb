@@ -21,8 +21,16 @@ describe MessageBuilder do
       strategy = {
         download_url: 'https://images.example.com/img',
         actions: [
-          { name: :openHomepage, link_uri: 'https://twitter.com/hoppiestar', text: 'Open our homepage.' },
-          { name: :showItem, link_uri: 'https://twitter.com/hoppiestar/status/719483889526288384', text: 'Show item.' }
+          {
+            name: :openHomepage,
+            link_uri: 'https://twitter.com/hoppiestar',
+            text: 'Open our homepage.'
+          },
+          {
+            name: :showItem,
+            link_uri: 'https://twitter.com/hoppiestar/status/719483889526288384',
+            text: 'Show item.'
+          }
         ]
       }
       message = MessageBuilder.new.build_rich(to: to, strategy: strategy)
