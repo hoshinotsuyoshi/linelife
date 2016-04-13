@@ -1,3 +1,4 @@
+require 'forwardable'
 require 'json'
 require 'linelife/message/inbound'
 require 'linelife/signature_validator'
