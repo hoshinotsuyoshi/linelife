@@ -18,7 +18,7 @@ shared_context 'inbound message is opType:4' do
           'fromChannel' => 1_341_301_815,
           'id' => 'WB1519-3333333333',
           'to' => ['uefffffffffffffffffffffffffffffff'],
-          'toChannel' => 1_444_444_4444
+          'toChannel' => 1_444_444_444
         }
       ]
     }.to_json
