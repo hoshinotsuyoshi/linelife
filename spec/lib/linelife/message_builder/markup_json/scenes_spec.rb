@@ -81,7 +81,7 @@ describe MessageBuilder::MarkupJson::Scenes do
       end
     end
 
-    context 'actions is filled with listener_params and width-height is filled' do
+    context 'actions is filled with listener_params and width-height exists' do
       context 'actions size is 2' do
         let(:strategy) do
           {
