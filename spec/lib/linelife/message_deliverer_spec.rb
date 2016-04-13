@@ -1,6 +1,6 @@
-describe Linelife::MessageClient do
+describe Linelife::MessageDeliverer do
   describe '.new' do
-    subject { Linelife::MessageClient.new.client }
+    subject { Linelife::MessageDeliverer.new.deliverer }
     it 'uses ssl' do
       expect(subject).to be_use_ssl
     end
@@ -15,7 +15,7 @@ describe Linelife::MessageClient do
 
     context 'given proxy' do
       before do
-        expect_any_instance_of(Linelife::MessageClient).to \
+        expect_any_instance_of(Linelife::MessageDeliverer).to \
           receive(:proxy_url) { 'http://user:pass@p.example.com' }.at_least(1)
       end
 
@@ -34,7 +34,7 @@ describe Linelife::MessageClient do
 
     context 'not given proxy' do
       before do
-        expect_any_instance_of(Linelife::MessageClient).to \
+        expect_any_instance_of(Linelife::MessageDeliverer).to \
           receive(:proxy_url) { nil }.at_least(1)
       end
 

@@ -1,6 +1,6 @@
 require 'linelife/message'
 require 'linelife/message_builder'
-require 'linelife/message_client'
+require 'linelife/message_deliverer'
 require 'linelife/message_extractor'
 
 #
@@ -9,7 +9,7 @@ require 'linelife/message_extractor'
 module Linelife
   def send_message(hash)
     message = Message::Outbound.new(hash)
-    MessageClient.new.send(message)
+    MessageDeliverer.new.send(message)
   end
 
   module_function :send_message

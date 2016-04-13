@@ -3,22 +3,22 @@ require 'uri'
 
 module Linelife
   #
-  # client wrapping Net::HTTP(and .Proxy)
+  # deliverer wrapping Net::HTTP(and .Proxy)
   #
-  class MessageClient
+  class MessageDeliverer
     def initialize
-      @client = build_client
+      @deliverer = build_deliverer
     end
 
-    attr_reader :client
+    attr_reader :deliverer
 
     def send(message)
-      client.request(message)
+      deliverer.request(message)
     end
 
     private
 
-    def build_client
+    def build_deliverer
       proxy_class.new(endpoint_uri.host, endpoint_uri.port).tap do |http|
         http.use_ssl = true
       end
