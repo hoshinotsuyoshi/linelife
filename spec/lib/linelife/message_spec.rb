@@ -23,7 +23,7 @@ describe Linelife::Message do
       it { expect(subject['X-Line-Trusted-User-With-Acl']).to eq 'channel_mid' }
       it { expect(subject.body).to eq '{"a":"b"}' }
       it { expect(subject.path).to eq '/v1/events' }
-      it { expect(subject.post).to be_a Net::HTTP::Post }
+      it { expect(subject).to be_a Net::HTTP::Post }
     end
   end
 end

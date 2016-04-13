@@ -13,7 +13,7 @@ module Linelife
     attr_reader :client
 
     def send(message)
-      client.request(message.post)
+      client.request(message)
     end
 
     private

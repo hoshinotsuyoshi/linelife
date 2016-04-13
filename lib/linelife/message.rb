@@ -1,4 +1,3 @@
-require 'forwardable'
 require 'net/http'
 require 'json'
 require 'uri'
@@ -7,10 +6,9 @@ module Linelife
   #
   # messages to send to bot-api
   #
-  class Message
-    extend Forwardable
+  class Message < Net::HTTP::Post
     def initialize(hash)
-      @post = Net::HTTP::Post.new(endpoint_uri.path)
+      super(endpoint_uri.path)
       json = hash.to_json
       basic_header.each do |k, v|
         self[k] = v
@@ -18,9 +16,6 @@ module Linelife
       self['Content-Length'] = json.size.to_s
       self.body = json
     end
-
-    attr_reader :post
-    def_delegators :post, :body, :body=, :path, :[], :[]=
 
     private
 

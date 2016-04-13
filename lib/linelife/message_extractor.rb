@@ -28,7 +28,7 @@ module Linelife
     end
   end
 
-  class Message
+  class Message < Net::HTTP::Post
     #
     # inbound message
     #
