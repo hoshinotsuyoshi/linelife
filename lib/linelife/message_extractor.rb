@@ -19,9 +19,8 @@ module Linelife
       end
     end
 
-    def extract(request)
-      string = request.body.read
-      validate!(request: request, string: string)
+    def extract(signature_inbound:, string:)
+      validate!(signature_inbound: signature_inbound, string: string)
       do_extract(string)
     end
 

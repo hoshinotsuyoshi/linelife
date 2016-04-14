@@ -9,9 +9,9 @@ module Linelife
   class SignatureValidator
     class Error < ::StandardError; end
 
-    def validate!(request:, string:)
+    def validate!(signature_inbound:, string:)
       signature = calculate_signature(string)
-      return if signature == request.env['HTTP_X_LINE_CHANNELSIGNATURE']
+      return if signature == signature_inbound
       raise Error
     end
 
