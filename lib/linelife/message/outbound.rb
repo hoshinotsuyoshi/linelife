@@ -14,7 +14,7 @@ module Linelife
         basic_header.each do |k, v|
           self[k] = v
         end
-        self['Content-Length'] = json.size.to_s
+        self['Content-Length'] = json.bytesize.to_s
         self.body = json
       end
 

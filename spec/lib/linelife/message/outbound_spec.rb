@@ -1,8 +1,8 @@
 describe Linelife::Message::Outbound do
   describe '.new' do
-    context 'given {"a":"b"}' do
+    context 'given {"a":"あ"}' do
       subject do
-        Linelife::Message::Outbound.new('a' => 'b')
+        Linelife::Message::Outbound.new('a' => 'あ')
       end
 
       before do
@@ -14,7 +14,7 @@ describe Linelife::Message::Outbound do
           receive(:line_channel_mid) { 'channel_mid' }
       end
 
-      it { expect(subject['Content-Length']).to eq '9' }
+      it { expect(subject['Content-Length']).to eq '11' }
       it do
         expect(subject['Content-Type']).to eq 'application/json; charset=UTF-8'
       end
