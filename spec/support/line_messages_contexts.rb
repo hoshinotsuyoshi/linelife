@@ -70,8 +70,8 @@ shared_context 'inbound message is contentType:2' do
             'location' => nil,
             'id' => '4111111111111',
             'to' => ['uefffffffffffffffffffffffffffffff'],
-            "originalContentUrl" => "http://example.com/original.jpg",
-            "previewImageUrl" => "http://example.com/preview.jpg",
+            'originalContentUrl' => 'http://example.com/original.jpg',
+            'previewImageUrl' => 'http://example.com/preview.jpg',
             'contentMetadata' => {
               'AT_RECV_MODE' => '2',
               'EMTVER' => '4'
