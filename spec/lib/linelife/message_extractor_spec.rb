@@ -61,7 +61,7 @@ describe Linelife::MessageExtractor do
   describe '#extract' do
     it 'calls SignatureValidator#validate! and calls #extract' do
       expect_any_instance_of(Linelife::SignatureValidator).to \
-        receive(:validate!).with(signature_inbound: 'sign', string: 'body') { nil }
+        receive(:validate!).with(signature_inbound: 'sign', string: 'body')
       extractor = Linelife::MessageExtractor.new
 
       expect(extractor).to \

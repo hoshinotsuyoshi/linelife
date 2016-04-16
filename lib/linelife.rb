@@ -15,7 +15,10 @@ module Linelife
   module_function :send_message
 
   def extract_messages(signature_inbound:, string:)
-    MessageExtractor.new.extract(signature_inbound: signature_inbound, string: string)
+    MessageExtractor.new.extract(
+      signature_inbound: signature_inbound,
+      string: string
+    )
   end
 
   module_function :extract_messages
