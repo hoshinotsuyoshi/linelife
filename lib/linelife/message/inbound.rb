@@ -33,6 +33,8 @@ module Linelife
         case content['contentType']
         when 1
           :text
+        when 2
+          :image
         end
       end
 

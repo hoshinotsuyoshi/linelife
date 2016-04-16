@@ -58,6 +58,40 @@ shared_context 'inbound message is contentType:1' do
   end
 end
 
+shared_context 'inbound message is contentType:2' do
+  let(:json) do
+    {
+      'result' => [
+        {
+          'content' => {
+            'toType' => 1,
+            'createdTime' => 1_460_449_091_058,
+            'from' => 'ueddddddddddddddddddddddddddddddd',
+            'location' => nil,
+            'id' => '4111111111111',
+            'to' => ['uefffffffffffffffffffffffffffffff'],
+            "originalContentUrl" => "http://example.com/original.jpg",
+            "previewImageUrl" => "http://example.com/preview.jpg",
+            'contentMetadata' => {
+              'AT_RECV_MODE' => '2',
+              'EMTVER' => '4'
+            },
+            'deliveredTime' => 0,
+            'contentType' => 2,
+            'seq' => nil
+          },
+          'createdTime' => 1_460_449_091_085,
+          'eventType' => '138311609000106303',
+          'from' => 'u20666666666666666666666666666666',
+          'fromChannel' => 1_341_301_815,
+          'id' => 'WB1522-3333333333',
+          'to' => ['uefffffffffffffffffffffffffffffff'],
+          'toChannel' => 1_444_444_444 }
+      ]
+    }.to_json
+  end
+end
+
 shared_context 'outbound expected message is contentType:1' do
   let(:expected_hash) do
     {

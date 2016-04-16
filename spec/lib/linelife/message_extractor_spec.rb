@@ -9,6 +9,15 @@ describe Linelife::MessageExtractor do
       end
     end
 
+    describe 'returns object which responds to :content_type' do
+      include_context 'inbound message is contentType:2'
+
+      it do
+        messages = Linelife::MessageExtractor.new.do_extract(json)
+        expect(messages.first.content_type).to be :image
+      end
+    end
+
     describe 'returns object which responds to :from' do
       include_context 'inbound message is contentType:1'
 
