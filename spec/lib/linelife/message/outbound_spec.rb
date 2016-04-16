@@ -21,7 +21,7 @@ describe Linelife::Message::Outbound do
       it { expect(subject['X-Line-Channelid']).to eq 'channel_id' }
       it { expect(subject['X-Line-Channelsecret']).to eq 'channel_secret' }
       it { expect(subject['X-Line-Trusted-User-With-Acl']).to eq 'channel_mid' }
-      it { expect(subject.body).to eq '{"a":"b"}' }
+      it { expect(subject.body).to eq '{"a":"あ"}' }
       it { expect(subject.path).to eq '/v1/events' }
       it { expect(subject).to be_a Net::HTTP::Post }
     end
